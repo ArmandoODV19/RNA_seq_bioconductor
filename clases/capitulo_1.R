@@ -17,3 +17,9 @@ library(readr)
 
 wtrawcounts <- read_csv("data/fibrosis_smoc2_rawcounts.csv")
 saveRDS(wtrawcounts, file = "data/raw_counts_fibrosis.rds")
+
+# explorando data set de fribrosis
+
+head(raw_counts_fibrosis)
+str(raw_counts_fibrosis)
+names(raw_counts_fibrosis)
