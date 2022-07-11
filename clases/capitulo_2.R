@@ -35,3 +35,17 @@ View(wt_metadata)
 # para trabajar con DESeq2 el nombre de las muestras (nombre de las filas) en
 # el metadata deben coincidir con el nombre de las muestras (nombre columnas)
 # en el data set de las cuentas
+
+
+# cambiando la primer columna de raw_counts_fibrosis como nombre de filas
+raw_counts_fibrosis <-  column_to_rownames(raw_counts_fibrosis, var = "...1")
+
+# cambiando los nombre de raw_counts_fibrosis para que sean iguales a wt_metadata
+
+rownames(wt_metadata)
+
+colnames(raw_counts_fibrosis) <- c("wt_fibrosis1","wt_fibrosis2","wt_normal1",
+                                   "wt_normal2", "wt_fibrosis3","wt_normal3",
+                                   "wt_fibrosis4")
+
+
