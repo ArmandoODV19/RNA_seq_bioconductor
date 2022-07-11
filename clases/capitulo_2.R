@@ -34,7 +34,8 @@ View(wt_metadata)
 ### IMPORTANTE ###
 # para trabajar con DESeq2 el nombre de las muestras (nombre de las filas) en
 # el metadata deben coincidir con el nombre de las muestras (nombre columnas)
-# en el data set de las cuentas
+# en el data set de las cuentas. Así como el orden, en ambos datasets deben
+# tener el mismo orden de aparicion
 
 
 # cambiando la primer columna de raw_counts_fibrosis como nombre de filas
@@ -48,4 +49,12 @@ colnames(raw_counts_fibrosis) <- c("wt_fibrosis1","wt_fibrosis2","wt_normal1",
                                    "wt_normal2", "wt_fibrosis3","wt_normal3",
                                    "wt_fibrosis4")
 
+# para saber si el orden de ambos data sets coincide se utiliza el siguiente argumento
 
+all(rownames(wt_metadata) == colnames(raw_counts_fibrosis))
+
+# cuando no coincide el orden se utiliza la función match()
+match(vector1, vector2)
+# vector1 orden deseado
+# vector2 vector de valores a ordenar
+# output indices de como ordenar el vector2 en el mismo orden que vector1
