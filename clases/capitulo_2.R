@@ -30,3 +30,8 @@ View(raw_counts_fibrosis)
 
 # cargar metadata y visualizar
 View(wt_metadata)
+
+### IMPORTANTE ###
+# para trabajar con DESeq2 el nombre de las muestras (nombre de las filas) en
+# el metadata deben coincidir con el nombre de las muestras (nombre columnas)
+# en el data set de las cuentas
