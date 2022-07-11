@@ -16,6 +16,8 @@ library(readr)
 # genes > analisis estadistico para identificar genes expresados diferencialmente
 
 wtrawcounts <- read_csv("data/fibrosis_smoc2_rawcounts.csv")
+
+
 saveRDS(wtrawcounts, file = "data/raw_counts_fibrosis.rds")
 
 # explorando data set de fribrosis
