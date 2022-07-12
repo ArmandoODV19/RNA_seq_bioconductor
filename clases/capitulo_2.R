@@ -70,3 +70,14 @@ idx <- match(colnames(raw_counts_fibrosis), rownames(wt_metadata))
 
 # despues se reordena acorde a los brackets []
 wt_metadata <- wt_metadata[idx,]
+
+# para el flujo de trabajo de DESeq2 se necesita crear un objeto DESeq
+# para ello tulizamos la funcion DESeqDataSetFromMatrix()
+DESeqDataSetFromMatrix()
+
+dds_wt <- DESeqDataSetFromMatrix(countData = raw_counts_fibrosis,
+                                 colData = wt_metadata,
+                                 design ~ condition)
+
+# esta funcion genera un objeto Desq2 de la clase
+# Ranged summarized experiment
