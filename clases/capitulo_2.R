@@ -58,3 +58,15 @@ match(vector1, vector2)
 # vector1 orden deseado
 # vector2 vector de valores a ordenar
 # output indices de como ordenar el vector2 en el mismo orden que vector1
+
+# esta funcion genera un vector con el orden en que deben acomodarse los datos
+# del vector 2 para que coincidan con el vector 1
+
+match(colnames(raw_counts_fibrosis), rownames(wt_metadata))
+
+# con el output de la funcion se ordenan las filas del metadata
+
+idx <- match(colnames(raw_counts_fibrosis), rownames(wt_metadata))
+
+# despues se reordena acorde a los brackets []
+wt_metadata <- wt_metadata[idx,]
