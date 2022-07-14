@@ -77,7 +77,23 @@ DESeqDataSetFromMatrix()
 
 dds_wt <- DESeqDataSetFromMatrix(countData = raw_counts_fibrosis,
                                  colData = wt_metadata,
-                                 design ~ condition)
+                                 design= ~ condition)
 
 # esta funcion genera un objeto Desq2 de la clase
 # Ranged summarized experiment
+
+
+# el primer paso es normalizar las cuentas crudas para el analisis de control
+# de calidad
+# los principales factores para normalizar son
+# library depth, gene length, rna composition
+# DESeq2 utiliza el metodo "median of ratios" para normalizacion
+# este metodo ajusta las cuentas crudas para tamaño de libreria y
+# resistente a numeros largos de genes diferencials
+# para calcular las cuentas normalizadas se utiliza la funcion sobre
+# el objeto dds
+estimateSizeFactors()
+
+dds_wt <- estimateSizeFactors(dds_wt)
+
+sizeFactors(dds_wt)
