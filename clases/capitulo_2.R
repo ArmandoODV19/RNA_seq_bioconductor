@@ -160,3 +160,9 @@ pheatmap(vsd_cor_wt, annotation = select(wt_metadata, condition))
 
 ### PCA
 
+# PCS es una tecnica que enfatiza la variación de los datos
+# para graficar los componentes principales se utiliza la
+# funcion plotPCA() con el objeto vsd_wt y el argumento intgroup = "condition"
+
+plotPCA(vsd_wt, intgroup = "condition")
+
