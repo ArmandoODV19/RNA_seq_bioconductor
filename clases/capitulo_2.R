@@ -90,8 +90,9 @@ dds_wt <- DESeqDataSetFromMatrix(countData = raw_counts_fibrosis,
 # DESeq2 utiliza el metodo "median of ratios" para normalizacion
 # este metodo ajusta el conteo de las cuentas crudas por tamaño de libreria y
 #  es resistente a numeros largos de genes diferenciales
-# para calcular las cuentas normalizadas se utiliza la funcion sobre
-# el objeto dds
+# para calcular las cuentas normalizadas se utiliza la
+# funcion estimateSizeFactors() sobre el objeto dds
+
 estimateSizeFactors()
 
 dds_wt <- estimateSizeFactors(dds_wt)
