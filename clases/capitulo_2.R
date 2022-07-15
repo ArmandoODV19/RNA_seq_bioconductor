@@ -113,3 +113,17 @@ normalized_wt_counts <- counts(dds_wt, normalized = TRUE)
 View(normalized_wt_counts)
 
 # si normalized = FALSE, se extraen las cuentas crudas
+
+
+# con las cuentas normalizadas se puede comparar el numero de
+# cuentas entre muestras. Podemos explorar la similitud de las muestras
+# con respecto a la expresión génica para evaluar la calidad del
+# experimento. para esto se utilizan metodos de visualizacion
+# para analisis de agrupamiento no supervisado
+
+# previo a la visualizacion debemos transformar las cuentas normalizadass en log
+# paramejorar la visualizacion en el agrupamiento
+
+# Para RNA DESeq2 utiliza variance stabilizing transformation mediante
+# la funcion vst(), la cual es una transformacion logritmica que modera
+# la varianza a través de la media
