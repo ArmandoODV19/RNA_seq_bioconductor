@@ -88,8 +88,8 @@ dds_wt <- DESeqDataSetFromMatrix(countData = raw_counts_fibrosis,
 # los principales factores para normalizar son
 # library depth, gene length, rna composition
 # DESeq2 utiliza el metodo "median of ratios" para normalizacion
-# este metodo ajusta las cuentas crudas para tamaño de libreria y
-# resistente a numeros largos de genes diferencials
+# este metodo ajusta el conteo de las cuentas crudas por tamaño de libreria y
+#  es resistente a numeros largos de genes diferenciales
 # para calcular las cuentas normalizadas se utiliza la funcion sobre
 # el objeto dds
 estimateSizeFactors()
