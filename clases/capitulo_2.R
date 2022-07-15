@@ -97,4 +97,19 @@ estimateSizeFactors()
 
 dds_wt <- estimateSizeFactors(dds_wt)
 
+# DESeq2 utiliza sizeFactors() para normalizar las cuentas crudas
+# las cuentas crudas de cada muestra se dividen por el tamaño de factor
+# asociado especifico para cada muestra para normalizar
+# para observar el tamaño de los factores usados para la normalizacion
+# se utiliza la funcion sizeFactors()
 sizeFactors(dds_wt)
+
+# Una vez que se han calculado el tamaño de los factores y se han añadido al
+# objeto DESeq2, se pueden extraer las cuentas normalizadas de el
+
+# Para extraer las cuentas normalizadas se utiliza la funcion counts()
+
+normalized_wt_counts <- counts(dds_wt, normalized = TRUE)
+View(normalized_wt_counts)
+
+# si normalized = FALSE, se extraen las cuentas crudas
