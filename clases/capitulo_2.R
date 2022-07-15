@@ -169,3 +169,4 @@ pheatmap(vsd_cor_wt, annotation = select(wt_metadata, condition))
 
 plotPCA(vsd_wt, intgroup = "condition")
 
+
