@@ -127,3 +127,36 @@ View(normalized_wt_counts)
 # Para RNA DESeq2 utiliza variance stabilizing transformation mediante
 # la funcion vst(), la cual es una transformacion logritmica que modera
 # la varianza a través de la media
+
+vsd_wt <- vst(dds_wt, blind = TRUE)
+
+# el clustering jerarquico con mapa de calor se utiliza para obtener
+# la similitud de la expresion genica entre diferentes muestras del data set
+# esta tecnica se utiliza para explorar que tan similares son las replicas entre
+# cada una
+# el heatmap se realiza a partir de un analisis de correlacion entre parejas
+# del data set
+
+# se espera que las replicas biologicas se agrupen entre si y las condiciones
+# de la muestra aparte. Como la amayoria de los genes no muestran expresion
+# diferencial, las muestras tienden a agruparse entre si. Muestras con
+# valor de correlacion menor a 0.8 requieren investigacion sobre
+# si las muestras tienen valores atipicos o estan contaminadas
+
+# para el heatmap se debe extraer informacion del objeto vst y convertirlo
+# en matriz utilizando la funcion assay()
+
+vsd_mat_wt <- assay(vsd_wt)
+
+vsd_cor_wt <- cor(vsd_mat_wt)
+View(vsd_cor_wt)
+
+# despues de extraer la informacion se utiliza la funcion pheatmap() para
+# realizar el grafico
+
+pheatmap(vsd_cor_wt, annotation = select(wt_metadata, condition))
+# el argumento annotation = selecciona los factores en el metadata
+# para incluirlos como antocaiones en la barras
+
+### PCA
+
