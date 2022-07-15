@@ -41,3 +41,12 @@ ggplot(df, aes(x = mean_counts, y = variance_counts)) +
 plotDispEsts(dds_wt)
 
 # se espera que la dispersion disminuya al aumentar la media
+
+# 2. evaluacion fold2
+# por default DESeq2 genera el test de Wald para parejas para evaluar
+# diferencias en la expresion entre dos muestras para la condicion de interes
+
+# el resultado se obtiene con la funcion result() especificando
+# un valor de significancia con el argumento alpha =
+
+results(dds_wt, alpha = 0.05)
