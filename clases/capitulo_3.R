@@ -81,3 +81,6 @@ wt_res <- lfcShrink(dds_wt,
 
 plotMA(wt_res, ylim = c(-8,8))
 # este LFC suele ser mas precison
+
+
+### explorando resultados de DESeq2
