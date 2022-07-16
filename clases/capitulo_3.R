@@ -50,3 +50,6 @@ plotDispEsts(dds_wt)
 # un valor de significancia con el argumento alpha =
 
 results(dds_wt, alpha = 0.05)
+
+# para hacer comparaciones especificas entre condiciones se utilizan
+# los argumentos
