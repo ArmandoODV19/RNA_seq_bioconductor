@@ -51,5 +51,11 @@ plotDispEsts(dds_wt)
 
 results(dds_wt, alpha = 0.05)
 
+# estos resultados comparan normla vs fibrosis
 # para hacer comparaciones especificas entre condiciones se utilizan
-# los argumentos
+# el argumento contrast
+
+wt_res <- results(dds_wt,
+                  contrast = c("condition", "fibrosis",
+                               "normal"), alpha = 0.05)
+# con este resultado podemos comparar fibrosis vs normal
