@@ -105,7 +105,7 @@ summary(wt_res)
 # para seleccionar los genes DE
 
 # en este ejemplo se utilizara un alpha de 0.05 y un log2 de 1.25
-# convertido genera 0.32
+# 1.25 es igual a 0.32 en la escala log2
 
 wt_res <- results(dds_wt,
                   contrast = c("condition", "fibrosis", "normal"),
@@ -120,4 +120,21 @@ wt_res <- lfcShrink(dds_wt,
                     type="normal") # esta linea se agregó porque marcaba error, se debe usar "apeglm" o "ashr"
 
 
+# con estos nuevos resultados se utiliza la funcion summary()
+summary(wt_res)
 
+# a continuacion se realizara un df para determinar el nombre de los genes DE
+# primero se carga el nombre de los genes de raton, ya que esta es la muestra
+# de trabajo
+
+BiocManager::install("annotables")
+library(annotables)
+grcm38
+
+wt_res_all <- data.frame(wt_res) %>%
+  rownames_to_column(var = "ensgene") %>%
+  left_join(x = wt_res_all,
+            y = grm38[, c("ensgene", "symbol", "description")],
+            by = "ensgene")
+
+View(wt_res_all)
