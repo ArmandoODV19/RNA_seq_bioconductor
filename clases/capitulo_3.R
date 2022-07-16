@@ -84,3 +84,40 @@ plotMA(wt_res, ylim = c(-8,8))
 
 
 ### explorando resultados de DESeq2
+
+# para obtener descripciones de la columna de resultado se utiliza
+# la funcion mcols()
+
+mcols(wt_res)
+
+head(wt_res, n = 10)
+# para determinar los genes diferencialmente expresados
+# se utiliza la columna padj que contiene los valores de p ajustados
+
+# summary() muestra el total de genes expresados diferencialmente
+# que se ajusta a el valor p
+# este summary() es una funcion de DESeq2
+summary(wt_res)
+
+# Asimismo, se puede agregar un limite de log2 fold change para
+# ser mas precisos en la seleccion de genes
+# de esta forma se realiza una combinacion entre alpha y log2
+# para seleccionar los genes DE
+
+# en este ejemplo se utilizara un alpha de 0.05 y un log2 de 1.25
+# convertido genera 0.32
+
+wt_res <- results(dds_wt,
+                  contrast = c("condition", "fibrosis", "normal"),
+                  alpha = 0.05,
+                  lfcThreshold = 0.32)
+
+# y se realiza de nuevo la funcion lfcShrink() con los nuevos resultados
+
+wt_res <- lfcShrink(dds_wt,
+                    contrast = c("condition", "fibrosis", "normal"),
+                    res=wt_res,
+                    type="normal") # esta linea se agregó porque marcaba error, se debe usar "apeglm" o "ashr"
+
+
+
