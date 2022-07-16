@@ -13,3 +13,14 @@ pheatmap(sig_norm_counts_wt,
          show_rownames = F,
          annotation = select(wt_metadata, condition),
          scale = "row")
+
+
+# volcano plot
+
+# priemero se genera una columna de valores logicos con los genes
+# que tienen un valor p adjustado
+
+wt_res_all <- wt_res_all %>%
+  mutate(threshold = padj < 0.05)
+
+View(wt_res_all)
