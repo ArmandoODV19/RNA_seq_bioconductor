@@ -138,3 +138,12 @@ wt_res_all <- data.frame(wt_res) %>%
             by = "ensgene")
 
 View(wt_res_all)
+
+# se extraen los genes significativos con la funcion subset()
+wt_res_sig <- subset(wt_res_all, padj < 0.05)
+
+# se ordenan acorde al valor de p ajustado
+wt_res_sig <- wt_res_sig %>%
+  arrange(padj)
+
+View(wt_res_sig)
