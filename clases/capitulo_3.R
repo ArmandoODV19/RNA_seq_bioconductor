@@ -59,3 +59,24 @@ wt_res <- results(dds_wt,
                   contrast = c("condition", "fibrosis",
                                "normal"), alpha = 0.05)
 # con este resultado podemos comparar fibrosis vs normal
+# los nombres de la condicion de interes y
+# los grupos muestra deben de coincidir con el metadata
+# de esta forma los resultados muestran el log2 fold change comparando
+# fibrosis vs normal
+
+# para explorar mas los datos se pueden graficar
+
+plotMA(wt_res, ylim = c(-8,8))
+# este plot grafica la media de la cuentas normalizadas contra
+# log2 fold changes, los genes expresados diferencialmente se
+# encuentran en otro color
+
+# log2 fold change shrinkage
+# para mejorar el log2 fold change se realiza un shrinke (LFC shrinkage)
+wt_res <- lfcShrink(dds_wt,
+                    contrast = c("condition", "fibrosis",
+                                 "normal"),
+                    res = wt_res)
+
+plotMA(wt_res, ylim = c(-8,8))
+# este LFC suele ser mas precison
