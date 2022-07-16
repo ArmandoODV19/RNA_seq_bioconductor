@@ -137,9 +137,9 @@ library(annotables)
 grcm38
 
 wt_res_all <- data.frame(wt_res) %>%
-  rownames_to_column(var = "ensgene") %>%
-  left_join(x = wt_res_all,
-            y = grm38[, c("ensgene", "symbol", "description")],
+  rownames_to_column(var = "ensgene")
+wt_res_all <- left_join(x = wt_res_all,
+            y = grcm38[, c("ensgene", "symbol", "description")],
             by = "ensgene")
 
 View(wt_res_all)
