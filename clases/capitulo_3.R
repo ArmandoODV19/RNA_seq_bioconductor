@@ -127,7 +127,12 @@ summary(wt_res)
 # primero se carga el nombre de los genes de raton, ya que esta es la muestra
 # de trabajo
 
-BiocManager::install("annotables")
+
+# se necesito este script para descargar annotables, el token se
+# genera en github
+remotes::install_github("stephenturner/annotables",
+                        auth_token = NULL)
+
 library(annotables)
 grcm38
 
