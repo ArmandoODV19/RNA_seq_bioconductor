@@ -58,6 +58,7 @@ results(dds_wt, alpha = 0.05)
 wt_res <- results(dds_wt,
                   contrast = c("condition", "fibrosis",
                                "normal"), alpha = 0.05)
+# en contrast se coloca la condicion, el grupo problema y el grupo base o normal
 # con este resultado podemos comparar fibrosis vs normal
 # los nombres de la condicion de interes y
 # los grupos muestra deben de coincidir con el metadata
