@@ -64,6 +64,7 @@ top_20 <- inner_join(top_20,
 
 ggplot(top_20, aes(x = ensgene, y = normalized_counts, color = condition))+
   geom_point()+
+  scale_y_log10()+
   xlab("Genes")+
   ylab("Normalized counts")+
   theme_bw()+
