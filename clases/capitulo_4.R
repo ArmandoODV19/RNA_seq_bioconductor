@@ -23,6 +23,9 @@ pheatmap(sig_norm_counts_wt,
 wt_res_all <- wt_res_all %>%
   mutate(threshold = padj < 0.05)
 
+
+
+
 # a continuacion con ggplot2 grafica los valores log2 fold change vs
 # los valores log10 de los p values ajustados
 
