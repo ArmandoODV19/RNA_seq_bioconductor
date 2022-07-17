@@ -40,5 +40,22 @@ ggplot(wt_res_all, aes(x = log2FoldChange, y = -log10(padj),
   geom_point()+
   xlab("log2 fold change") +
   ylab(" -log10 adjusted p value") +
-  ylim(c(0,15))
+  ylim(c(0,15))+
   theme(legend.position = "none")
+
+# otra accion es visualizar la expresion de los 20 genes mas
+# significativos, para esto se utilizaran las cuentas normalizadas
+# para los genes significativos ordenados por valor p ajustado
+# seleccionaremos los 20 genes mas significativos
+
+top_20 <- data.frame(sig_norm_counts_wt)[1:20,] %>%
+  rownames_to_column(var = "ensgene")
+
+top_20 <- gather(top_20, key = "samplename", value = "normalized_counts", 2:8)
+
+# para graficar la expresion se necesita unir el metadata para que el color
+# del grafico sea acorde a cada grupo
+
+top_20 <- inner_join(top_20,
+                     rownames_to_column(wt_metadata, var = "samplename"),
+                     by = "samplename")
