@@ -59,3 +59,12 @@ top_20 <- gather(top_20, key = "samplename", value = "normalized_counts", 2:8)
 top_20 <- inner_join(top_20,
                      rownames_to_column(wt_metadata, var = "samplename"),
                      by = "samplename")
+
+# garficar
+
+ggplot(top_20, aes(x = ensgene, y = normalized_counts, color = condition))+
+  geom_point()+
+  xlab("Genes")+
+  ylab("Normalized counts")+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
