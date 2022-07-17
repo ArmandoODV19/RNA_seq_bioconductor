@@ -32,3 +32,13 @@ ggplot(wt_res_all, aes(x = log2FoldChange, y = -log10(padj),
   xlab("log2 fold change") +
   ylab(" -log10 adjusted p value") +
   theme(legend.position = "none")
+
+# podemos hacer un zoom para observar los genes significaivos
+
+ggplot(wt_res_all, aes(x = log2FoldChange, y = -log10(padj),
+                       color = threshold)) +
+  geom_point()+
+  xlab("log2 fold change") +
+  ylab(" -log10 adjusted p value") +
+  ylim(c(0,15))
+  theme(legend.position = "none")
