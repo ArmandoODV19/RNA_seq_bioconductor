@@ -72,3 +72,5 @@ ggplot(top_20, aes(x = ensgene, y = normalized_counts, color = condition))+
   ylab("Normalized counts")+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
